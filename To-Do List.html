@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)http://127.0.0.1:5500/To-Do-List-main/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+
+    <!-- <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    /> -->
+    <title>To-Do List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/jpg" href="http://127.0.0.1:5500/To-Do-List-main/assets/images/favicon.png">
+    <link rel="stylesheet" href="./To-Do List_files/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="./To-Do List_files/css2" rel="stylesheet">
+    <link href="./To-Do List_files/aos.css" rel="stylesheet">
+
+    <!-- jquery CDN -->
+    <script src="./To-Do List_files/jquery.min.js.download"></script>
+
+
+    <!-- FontAwesome CDN-->
+
+    <link rel="stylesheet" href="./To-Do List_files/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+
+    <link href="./To-Do List_files/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="./To-Do List_files/style.css">
+
+</head>
+
+<body class="body-background" data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0">
+    <!-- Confirmation dialog -->
+    <div id="custom-confirm" class="custom-confirm">
+      <div class="confirm-content">
+        <div class="optbox_header">
+          <i id="confirm-cancel" class="fas fa-times close-button"></i>
+        </div>
+        <h2>Confirmation</h2>
+        <h4 id="confirm-msg">Are you sure you want to delete this task?</h4>
+        <div class="option_box">
+        <button class="btn btn-success mt-5 col-3" id="confirm-yes">Yes</button>
+        <button class="btn btn-danger mt-5 col-3" id="confirm-no">No</button>
+        </div>
+      </div>
+    </div>
+    <header>
+        <div class="navbar dark-mode">
+            <a href="http://127.0.0.1:5500/To-Do-List-main/index.html"><img src="./To-Do List_files/logo.png" alt="logo" width="120px"></a>
+
+            <a href="http://127.0.0.1:5500/To-Do-List-main/index.html#">
+                <div class="header aos-init aos-animate" data-aos="zoom-in"><b>
+                        <h1 class="dark-mode">To-Do List</h1>
+                    </b></div>
+            </a>
+
+            <a href="http://127.0.0.1:5500/To-Do-List-main/index.html#">
+                </a><div class="col-auto"><a href="http://127.0.0.1:5500/To-Do-List-main/index.html#">
+                    <input type="checkbox" id="light" class="checkbox" onclick="switchToDarkMode()">
+                    <label for="checkbox" class="label">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                        <div class="ball">
+                    
+                </div>
+            </label></a>
+        </div>
+
+    </div></header>
+    <div class="modal red" id="Modal">
+        <div class="content" id="content">
+            <span id="modal-text font-bold"> Some Text </span>
+            <button onclick="closemodal()" class="modal-btn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Clock Modification -->
+    <div class="Clock dark-mode aos-init aos-animate" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
+        <div id="time" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000" class="aos-init aos-animate">11:38:40 pm</div>
+        <div class="week">
+            <div id="day">Saturday,</div>
+            <div id="date">26/7/2025</div>
+        </div>
+    </div>
+
+    <section class="pt-3 pb-4">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-9 mx-auto py-3">
+              <div class="row">
+                <div class="col-md-4 position-relative">
+                  <div class="p-3 text-center">
+                    <h1 class="text-gradient text-white"><span id="state1">0</span></h1>
+                    <h5 class="mt-3 text-white font-bold ">Total Tasks</h5>
+                    <p class="text-sm font-weight-normal text-white ">Number of tasks you have created</p>
+                  </div>
+                  <hr class="vertical dark">
+                </div>
+                <div class="col-md-4 position-relative">
+                  <div class="p-3 text-center">
+                    <h1 class="text-gradient text-white"> <span id="state2">0</span></h1>
+                    <h5 class="mt-3 text-white font-bold">Remaining To Do</h5>
+                    <p class="text-sm font-weight-normal text-white">Tasks remaining to complete.</p>
+                  </div>
+                  <hr class="vertical dark">
+                </div>
+                <div class="col-md-4">
+                  <div class="p-3 text-center">
+                    <h1 class="text-gradient text-white" id="state3">0</h1>
+                    <h5 class="mt-3 text-white">Completed Tasks</h5>
+                    <p class="text-sm font-weight-normal text-white font-bold">Total Number of tasks completed</p>
+                  </div>
+                  <hr class="vertical dark">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="buttons-wrapper mt-0">
+        <div class="button-div">
+            <button type="button" id="myBtn" class="myBtn">Add a new task</button>
+        </div>
+        <ul id="taskList"></ul>
+        <div class="select">
+            <select name="todos" class="filter-todo">
+                <option value="all">All</option>
+                <option value="completed">Completed</option>
+                <option value="incomplete">Incomplete</option>
+            </select>
+        </div>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search..." oninput="searchTasks()">
+            <i class="fa fa-search search-icon"></i>
+        </div>
+    </div>
+    
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal-new">
+        <!-- Modal content -->
+        <div class="modal-content dark-mode">
+            <span class="close">×</span>
+            <form class="todoform">
+                <div class="input-group mb-3">
+                    <input type="text" placeholder="Add a new Task .." class="todo-input form-control dark-mode" id="textInput" required="">
+                        <select id="categorySelect" class="form-select">
+                            <option value="work">Work</option>
+                            <option value="personal">Personal</option>
+                            <option value="shopping">Shopping</option>
+                            <option value="shopping">Household</option>
+                            
+                        </select>
+                <div>
+                    <input type="text" id="taskInput" placrholder="add new task">
+                     <!-- Add a priority dropdown -->
+                    <select id="priorityInput">
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                    </select>
+                </div>
+ 
+                    <!-- Your existing task list (if present) -->       
+                        
+                        
+                    <div class="abc">
+                        <button id="todo-button" class="todo-button" type="submit">
+                            <i class="fas fa-plus-square"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div style="color: whitesmoke; font-size: xx-small" class="no-to-do-item">
+        <h1>THE LIST IS EMPTY !</h1>
+    </div>
+    <div class="todo-container">
+        <ul class="todo-list"></ul>
+    </div>
+    <button class="delete-all hide" onclick="show_alert()">Delete All Tasks</button>
+
+    <!-- <div cla ss="confirmation_box"></div> -->
+
+
+    <div class="confirmation_box hide " id="confirmation_box">
+        <div class="confirmation_box_inner">
+            <div class="optbox_header">
+                <i class="fas fa-times" onclick="goback()"></i>
+            </div>
+            <p id="text-modal">Are you sure you want to delete all tasks?</p>
+            <div class="option_box">
+                <button class="proceed btn btn-success mt-5 col-3" id="txt-color" onclick="deleteAll();">Yes</button>
+                <button class="donot_proceed btn btn-danger mt-5 col-3" id="txt-color1" onclick="goback()">No</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <footer>
+        <div class="footer dark-mode">
+            <div class="social-media">
+                <!-- instagram -->
+                <a class="link" href="https://www.youtube.com/@RahulMalviya2.0/" target="_blank" rel="noopener noreferrer"><img class="social-icon" src="./To-Do List_files/youtube-svgrepo-com" alt="youtube"></a>
+                <!-- linkedin -->
+                <a class="link" href="https://www.linkedin.com/in/rahul-malviya--593396216/" target="_blank" rel="noopener noreferrer"><img class="social-icon" src="./To-Do List_files/new-linkedIn.svg" alt="linkedin"></a>
+                <!-- gmail -->
+                <a class="link" href="mailto: rm4842410@gmail.com" target="_blank" rel="noopener noreferrer"><img class="social-icon" src="./To-Do List_files/gmail.svg" alt="gmail"></a>
+                <!-- github -->
+                <a class="link" href="https://github.com/Rahul77malv" target="_blank" rel="noopener noreferrer"><img class="social-icon" src="./To-Do List_files/github.svg" alt="Github"></a>
+
+            </div>
+            <div class="2ndrow-foter">
+                <p class="footer-desc footerelements dark-mode">This project is a part of <a class="footer-desc footerelements dark-mode" href="https://hacktoberfest.digitalocean.com/" target="_blank" rel="noopener noreferrer">Hacktoberfest
+                        2025</a>
+                </p>
+            </div>
+            <div class="3rd-row-footer footer-creator-label footerclasses">
+                <h3 class="footerelements dark-mode">Made with <i class="fas fa-heart fa-heart-custom"></i> by Rahul malviya</h3>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./To-Do List_files/app.js.download"></script>
+
+    <button onclick="scrollWindow()" id="scrollTop" title="Go to top" style="display: block;">⇑</button>
+    <script>
+        let scrollBtn = document.getElementById("scrollTop");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollBtn.style.display = "block";
+            } else {
+                scrollBtn.style.display = "none";
+            }
+        }
+
+        const scrollWindow = function () {
+            if (window.scrollY != 0) {
+                setTimeout(function () {
+                    window.scrollTo(0, window.scrollY - 50);
+                    window.scroll({ top: 0, behavior: "smooth" })
+                    scrollWindow();
+                }, 10);
+            }
+        }
+    </script>
+
+    <script>
+        // Function to search tasks
+        function searchTasks() {
+            const searchInput = document.getElementById("searchInput").value.toLowerCase();
+            const tasks = document.querySelectorAll(".todo");
+            
+            tasks.forEach(function(task) {
+                const taskText = task.querySelector("li").innerText.toLowerCase();
+                if (taskText.includes(searchInput)) {
+                    task.style.display = "flex"; // Display matching tasks
+                } else {
+                    task.style.display = "none"; // Hide non-matching tasks
+                }
+            });
+        }
+    </script>
+    <script src="./To-Do List_files/aos.js.download"></script>
+    <script>
+        AOS.init();
+      </script>
+
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+
+
+</body></html>
